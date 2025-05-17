@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weird Diaries</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/retro.min.css" />
+  <style>
+    /* GIF gallery outside terminal box */
+    #gif-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px auto;
+      max-width: 700px; /* match terminal width */
+      padding: 10px;
+    }
+    #gif-gallery img {
+      height: 100px;
+      width: auto;
+      image-rendering: auto;
+      border: none;
+      box-shadow: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="desktop">
+    <div id="terminal-window" class="large">
+      <div id="title-bar">
+        <span>MS-DOS Prompt - Weird Diaries</span>
+        <div id="title-buttons">
+          <div class="button">_</div>
+          <div class="button">□</div>
+          <div class="button">X</div>
+        </div>
+      </div>
+      <div id="terminal">
+        <div id="blog-list">
+          <h2>Select a Diary Entry:</h2>
+          <ul id="post-links"></ul>
+          <button onclick="window.location.href='index.html'" class="back-btn">← Back to Terminal</button>
+        </div>
+
+        <div id="blog-content" style="display: none;"></div>
+
+        <div id="back-button" style="display: none;">
+          <button onclick="goBackToList()" class="back-btn">← Back to Blog List</button>
+          <button onclick="window.location.href='index.html'" class="back-btn">← Back to Terminal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIF gallery outside the terminal window -->
+    <div id="gif-gallery">
+      <img src="gifs/90.gif" alt="90" />
+      <img src="gifs/swimming.gif" alt="swimming" />
+      <img src="gifs/boy.gif" alt="boy" />
+      <img src="gifs/sea.gif" alt="sea" />
+      <img src="gifs/cat.gif" alt="boat" />
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

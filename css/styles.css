@@ -1,0 +1,205 @@
+/* Universal reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Courier New', monospace !important;
+}
+
+/* Body styling with old solid Windows 95 background color */
+body, html {
+  height: 100%;
+  background-color: #00807F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Terminal window container */
+#terminal-window {
+  width: 640px;
+  height: 480px;
+  background: #C0C0C0;
+  border: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset -2px -2px #808080, inset 2px 2px #ffffff;
+  margin-top: 20px;
+}
+
+/* Title bar (MS-DOS style) */
+#title-bar {
+  background: linear-gradient(to bottom, #000080, #000050);
+  color: white;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  font-weight: bold;
+  box-shadow: inset 0 1px 0 #fff;
+}
+
+#title-bar span {
+  font-size: 14px;
+}
+
+/* Title bar buttons */
+#title-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.button {
+  width: 16px;
+  height: 16px;
+  background: #C0C0C0;
+  border: 2px outset #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 14px;
+  color: #000;
+  cursor: default;
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #ffffff;
+}
+
+/* Terminal interior */
+#terminal {
+  flex: 1;
+  background: #000080;
+  color: #00ff00;
+  padding: 10px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Command output area */
+#terminal-output {
+  white-space: pre-wrap;
+  overflow-y: auto;
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+/* Command line input */
+#input-line {
+  display: flex;
+  margin-top: auto;
+}
+
+#prompt {
+  color: #00ff00;
+  margin-right: 5px;
+}
+
+#cmdline {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #00ff00;
+  font-size: 15px;
+  outline: none;
+}
+
+/* Blog post list */
+#blog-list {
+  margin-top: 10px;
+}
+
+#post-links li {
+  margin-bottom: 8px;
+}
+
+.blog-link {
+  color: #0f0;
+  text-decoration: none;
+}
+
+.blog-link:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* Blog content view */
+#blog-content {
+  display: none;
+}
+
+/* Markdown styling */
+#blog-content pre {
+  background-color: #000;
+  color: #0f0;
+  padding: 15px;
+  margin: 20px 0;
+  border: 2px inset #aaa;
+  font-family: "Courier New", monospace;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+#blog-content code {
+  background-color: #111;
+  color: #0f0;
+  padding: 2px 4px;
+  font-family: "Courier New", monospace;
+}
+
+.back-btn {
+  margin-top: 15px;
+  background: #C0C0C0;
+  color: #000;
+  font-family: 'Courier New', monospace;
+  border: 2px outset #fff;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #999;
+}
+
+/* GIF gallery container */
+#gif-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+/* Clean GIF style: no border, no shadow, no pixelation */
+.gif {
+  image-rendering: auto;
+  border: none;
+  box-shadow: none;
+}
+
+/* Optional individual sizes */
+.gif1 {
+  height: 100px;
+  width: auto;
+}
+
+.gif2 {
+  height: 100px;
+  width: auto;
+}
+
+.gif3 {
+  height: 100px;
+  width: auto;
+}
+
+.ride {
+  height: 100px;
+  width: auto;
+}
+
+.old {
+  width: 100px;
+  top: 20px;
+}

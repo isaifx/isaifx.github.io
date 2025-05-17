@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thoughts - MS-DOS Prompt</title>
+  <link rel="stylesheet" href="css/thought.css" />
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background-color: #0000AA;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFFFFF;
+      gap: 20px; /* space between loop gif and terminal */
+      padding: 20px;
+    }
+
+    /* Container to hold loop gif on left and terminal on right */
+    #page-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+#loop-gif {
+  width: 300px;
+  height: auto;
+  image-rendering: auto;
+  transform: translate(-40px, -10px); /* shift left 15px and up 10px */
+  /* no borders or shadows */
+}
+
+    /* universe gif below terminal */
+    #universe-gif {
+      display: block;
+      margin: 15px auto 0 auto;
+      width: 100px;
+      height: auto;
+      image-rendering: auto;
+    }
+
+    #terminal-window {
+      width: 700px;
+      height: 500px;
+      background: #000080;
+      border: 2px solid #000;
+      box-shadow: inset -2px -2px #555, inset 2px 2px #ddd;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    #title-bar {
+      background: linear-gradient(to bottom, #000050, #000080);
+      color: white;
+      padding: 4px 10px;
+      font-weight: bold;
+      height: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    #terminal {
+      padding: 15px;
+      overflow-y: auto;
+      flex: 1;
+      white-space: pre-wrap;
+      font-size: 15px;
+      background: #000080;
+      color: #00ff00;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #terminal-output {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .back-btn {
+      background: #008000;
+      color: #fff;
+      border: none;
+      padding: 5px 12px;
+      margin: 10px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      align-self: flex-start;
+      box-shadow: 2px 2px 0 #004400;
+    }
+  </style>
+</head>
+<body>
+  <div id="page-wrapper">
+    <!-- Loop GIF on left -->
+    <img id="loop-gif" src="gifs/loop.gif" alt="loop gif" />
+
+    <!-- Terminal window -->
+    <div id="terminal-window">
+      <div id="title-bar">
+        <span>MS-DOS Prompt - Thoughts</span>
+        <div id="title-buttons">
+          <div class="button">_</div>
+          <div class="button">□</div>
+          <div class="button">X</div>
+        </div>
+      </div>
+      <div id="terminal">
+        <div id="terminal-output">
+          PAGE_FAULT_IN_NON_PAGED_AREA_OF_LIFE (0x0000005c)<br>
+          Have you ever wondered why nostalgia gets triggered?<br><br>
+
+          <strong>Your Info:</strong><br>
+          Loading info...
+        </div>
+        <!-- universe gif below terminal output -->
+        <img id="universe-gif" src="gifs/universe.gif" alt="universe gif" />
+      </div>
+      <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+    </div>
+  </div>
+
+  <script>
+    const terminalOutput = document.getElementById('terminal-output');
+
+    async function getPublicIP() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        return data.ip;
+      } catch {
+        return "Unavailable";
+      }
+    }
+
+    function getOS() {
+      const ua = navigator.userAgent;
+      if (ua.indexOf("Win") !== -1) return "Windows";
+      if (ua.indexOf("Mac") !== -1) return "MacOS";
+      if (ua.indexOf("Linux") !== -1) return "Linux";
+      if (ua.indexOf("Android") !== -1) return "Android";
+      if (ua.indexOf("like Mac") !== -1) return "iOS";
+      return "Unknown OS";
+    }
+
+    function getBrowser() {
+      const ua = navigator.userAgent;
+      if (ua.indexOf("Firefox") !== -1) return "Mozilla Firefox";
+      if (ua.indexOf("Chrome") !== -1 && ua.indexOf("Edg") === -1 && ua.indexOf("OPR") === -1) return "Google Chrome";
+      if (ua.indexOf("Edg") !== -1) return "Microsoft Edge";
+      if (ua.indexOf("Safari") !== -1 && ua.indexOf("Chrome") === -1) return "Safari";
+      if (ua.indexOf("OPR") !== -1) return "Opera";
+      return "Unknown Browser";
+    }
+
+    async function getLocationByIP(ip) {
+      try {
+        const res = await fetch(`https://ipinfo.io/${ip}/json?token=`);
+        if (!res.ok) return "Unknown location";
+        const data = await res.json();
+        const city = data.city || "";
+        const region = data.region || "";
+        const country = data.country || "";
+        return [city, region, country].filter(Boolean).join(", ") || "Unknown location";
+      } catch {
+        return "Unknown location";
+      }
+    }
+
+    async function showUserInfo() {
+      const ip = await getPublicIP();
+      const os = getOS();
+      const browser = getBrowser();
+      const location = await getLocationByIP(ip);
+
+      terminalOutput.innerHTML = `
+        PAGE_FAULT_IN_NON_PAGED_AREA_OF_LIFE (0x0000005c)<br>
+        Have you ever wondered why nostalgia gets triggered?<br><br>
+
+        <strong>Your Info:</strong><br>
+        IP Address: ${ip}<br>
+        OS: ${os}<br>
+        Browser: ${browser}<br>
+        Location: ${location}<br><br>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', showUserInfo);
+  </script>
+</body>
+</html>
