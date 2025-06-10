@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const blogPosts = [
     { file: "index.md", title: "Intro" },
-    { file: "another_post.md", title: "Another Blog Post" }
   ];
 
   blogPosts.forEach(post => {
