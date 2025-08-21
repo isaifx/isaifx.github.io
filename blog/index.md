@@ -17,4 +17,4 @@ int main(int argc, char **argv){
 ```
 Ok so thats fine right?
 Let us test out the GIF
-![funny](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTh5bnVkc2Nma290dHdhdnN1cWl3dmk3M2V3angwdnQ1eDU0dWhpaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUA7aPrpiB32fVAVva/giphy.gif)
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXJudm5uZjI2YXQzeGhqd2pxNXczYm8zMmh2NDNheGUzczAyMmZtaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RVTTCmNEtg10gtYimN/giphy.gif" width="200" alt="Funny cat" />
